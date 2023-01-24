@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Q1</title>
+</head>
+
+<body>
+	<input type="number" name="param" id="numberParam" placeholder="Enter the sequence number here...">
+	<input type="button" name="bt" id="inputBt" onclick="interfaceComunication()" value="SUBMIT">
+</body>
+
+<script type="text/javascript">
+
+	function interfaceComunication() {
+		var param = document.querySelector("#numberParam").value;
+		alert("The number in the fibonaci sequence that corresponds to position "+param+" is: " + recursiveFibonnaci(param))
+		alert("The number in the fibonaci sequence that corresponds to position "+param+" is: " + linearFibonnaci(param))
+	}
+
+	function recursiveFibonnaci(x){
+		if (x==0) {
+			return 0
+		} else if (x==1) {
+			return 1
+		} else {
+			return recursiveFibonnaci(x-1) + recursiveFibonnaci(x-2)
+		}
+	}
+
+
+	function linearFibonnaci(x) {
+		var fib = new Array(x+2);
+		fib[0] = 0;
+		fib[1] = 1;
+		for (var i=2; i<=x; i++) {
+			fib[i] = fib[i-1] + fib[i-2];
+		}
+		return fib[x];
+	}
+
+
+	function tester(numberOfSequence){
+		for (var i = 0; i <= numberOfSequence; i++) {
+			console.log(recursiveFibonnaci(i) + " - " + linearFibonnaci(i))
+		}
+	}
+	//tester(10)
+
+	
+</script>
+
+
+</html>

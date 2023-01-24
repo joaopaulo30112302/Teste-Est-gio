@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Q2</title>
+</head>
+
+<body>
+	<input type="number" name="param" id="numberParam" placeholder="Enter the sequence number here...">
+	<input type="button" name="bt" id="inputBt" onclick="interfaceComunication()" value="SUBMIT">
+</body>
+
+<script type="text/javascript">
+
+	
+
+
+
+
+
+
+	function interfaceComunication() {
+		var param = document.querySelector("#numberParam").value;
+		if (param < 2) {
+			alert("Invalid Parameter")
+		} else{
+			recursiveP(param)
+			linearP(param)
+		}
+	}
+
+
+
+
+
+
+
+	//primality recursive function block
+
+	function recursiveP(x){
+		var array = [1];
+		mainP(x,2,array);
+		console.log(array)
+	}
+
+
+	function divisibility(x,y){
+		if (y==1) {
+			return false
+		} else if(x%y == 0){
+			return true
+		} else {
+			return divisibility(x,(y-1))
+		}
+	}
+
+	function primality(x){
+		if (divisibility(x,x-1) == false) {
+			return true
+		} else {
+			return false
+		}
+	}
+
+
+	function mainP(x,y,array){
+		if (primality(y) == true) {
+			array.push(y)
+		}
+		y++;
+		if (x<y) {
+			return
+		}
+		else{
+			mainP(x,y,array)
+		}
+	}
+
+	//recursiveP(20)
+
+
+
+
+
+
+
+
+
+	//primality linear function block
+
+
+	function linearP(x){
+		var array = [1];
+		for (var i = 2; i <= x; i++) {
+			var cont = 0;
+			for (var j = 1; j <= i; j++) {
+				if (i % j == 0) {
+					cont++
+				}
+			}
+			if (cont < 3) {
+				array.push(i)
+			}
+		}
+		console.log(array)
+	}
+
+	//linearP(20)
+
+
+
+
+
+
+
+	
+</script>
+
+
+</html>
